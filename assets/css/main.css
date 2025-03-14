@@ -1055,103 +1055,169 @@ section,
 /*--------------------------------------------------------------
 # Portfolio Section
 --------------------------------------------------------------*/
+.portfolio .portfolio-filters-container {
+  margin-bottom: 40px;
+}
+
 .portfolio .portfolio-filters {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
   padding: 0;
-  margin: 0 auto 20px auto;
+  margin: 0;
   list-style: none;
-  text-align: center;
 }
 
 .portfolio .portfolio-filters li {
-  cursor: pointer;
-  display: inline-block;
-  padding: 8px 20px 10px 20px;
-  margin: 0;
   font-size: 15px;
   font-weight: 500;
-  line-height: 1;
-  margin-bottom: 5px;
-  border-radius: 50px;
+  padding: 8px 20px;
+  cursor: pointer;
+  border-radius: 30px;
+  background-color: color-mix(in srgb, var(--surface-color), transparent 50%);
+  color: var(--default-color);
   transition: all 0.3s ease-in-out;
-  font-family: var(--heading-font);
 }
 
-.portfolio .portfolio-filters li:hover,
+.portfolio .portfolio-filters li:hover {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 85%);
+  color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
 .portfolio .portfolio-filters li.filter-active {
-  color: var(--contrast-color);
   background-color: var(--accent-color);
+  color: var(--contrast-color);
 }
 
-.portfolio .portfolio-filters li:first-child {
-  margin-left: 0;
+.portfolio .portfolio-card {
+  background-color: var(--surface-color);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease-in-out;
 }
 
-.portfolio .portfolio-filters li:last-child {
-  margin-right: 0;
+.portfolio .portfolio-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 35px rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width: 575px) {
-  .portfolio .portfolio-filters li {
-    font-size: 14px;
-    margin: 0 0 10px 0;
-  }
+.portfolio .portfolio-card:hover .portfolio-overlay {
+  opacity: 1;
+  visibility: visible;
 }
 
-.portfolio .portfolio-item {
+.portfolio .portfolio-card:hover .portfolio-overlay .portfolio-actions {
+  transform: translateY(0);
+}
+
+.portfolio .portfolio-card .portfolio-image {
   position: relative;
   overflow: hidden;
+  aspect-ratio: 16/10;
 }
 
-.portfolio .portfolio-item .portfolio-info {
+.portfolio .portfolio-card .portfolio-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease-in-out;
+}
+
+.portfolio .portfolio-card .portfolio-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
   opacity: 0;
-  position: absolute;
-  left: 12px;
-  right: 12px;
-  bottom: -100%;
-  z-index: 3;
-  transition: all ease-in-out 0.5s;
-  background: color-mix(in srgb, var(--surface-color), transparent 10%);
-  padding: 15px;
+  visibility: hidden;
+  transition: all 0.4s ease-in-out;
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
 }
 
-.portfolio .portfolio-item .portfolio-info h4 {
-  font-size: 18px;
-  font-weight: 600;
-  padding-right: 50px;
+.portfolio .portfolio-card .portfolio-overlay .portfolio-actions {
+  transform: translateY(20px);
+  transition: all 0.4s ease-in-out;
+  display: flex;
+  gap: 15px;
 }
 
-.portfolio .portfolio-item .portfolio-info p {
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
+.portfolio .portfolio-card .portfolio-overlay .portfolio-actions a {
+  width: 45px;
+  height: 45px;
+  background-color: var(--surface-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-color);
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+
+.portfolio .portfolio-card .portfolio-overlay .portfolio-actions a:hover {
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+  transform: scale(1.1);
+}
+
+.portfolio .portfolio-card .portfolio-content {
+  padding: 25px;
+}
+
+.portfolio .portfolio-card .portfolio-content .category {
   font-size: 14px;
-  margin-bottom: 0;
-  padding-right: 50px;
+  color: var(--accent-color);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 10px;
 }
 
-.portfolio .portfolio-item .portfolio-info .preview-link,
-.portfolio .portfolio-item .portfolio-info .details-link {
-  position: absolute;
-  right: 50px;
-  font-size: 24px;
-  top: calc(50% - 14px);
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
-  transition: 0.3s;
-  line-height: 0;
+.portfolio .portfolio-card .portfolio-content h3 {
+  font-size: 20px;
+  margin: 0 0 15px;
+  font-weight: 600;
+  transition: color 0.3s ease;
 }
 
-.portfolio .portfolio-item .portfolio-info .preview-link:hover,
-.portfolio .portfolio-item .portfolio-info .details-link:hover {
+.portfolio .portfolio-card .portfolio-content h3:hover {
   color: var(--accent-color);
 }
 
-.portfolio .portfolio-item .portfolio-info .details-link {
-  right: 14px;
-  font-size: 28px;
+.portfolio .portfolio-card .portfolio-content p {
+  font-size: 15px;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  margin: 0;
+  line-height: 1.6;
 }
 
-.portfolio .portfolio-item:hover .portfolio-info {
-  opacity: 1;
-  bottom: 0;
+@media (max-width: 768px) {
+  .portfolio .portfolio-filters li {
+    font-size: 14px;
+    padding: 6px 15px;
+  }
+
+  .portfolio .portfolio-card .portfolio-content {
+    padding: 20px;
+  }
+
+  .portfolio .portfolio-card .portfolio-content h3 {
+    font-size: 18px;
+  }
+
+  .portfolio .portfolio-card .portfolio-content p {
+    font-size: 14px;
+  }
 }
+
 
 /*--------------------------------------------------------------
 # Pricing Section
@@ -2317,9 +2383,9 @@ section,
 /*--------------------------------------------------------------
 # Starter Section Section
 --------------------------------------------------------------*/
-.starter-section {
+
   /* Add your styles here */
-}
+
 
 /*--------------------------------------------------------------
 # Widgets
