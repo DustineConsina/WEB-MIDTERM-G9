@@ -2562,3 +2562,17 @@ section,
   color: color-mix(in srgb, var(--default-color), transparent 60%);
   font-size: 14px;
 }
+.custom-modal-size {
+  max-width: 450px; /* Adjust width to match your portfolio item */
+}
+
+.modal-content {
+  border-radius: 10px; /* Rounded edges */
+}
+
+.video-wrapper {
+  width: 100%;
+  max-width: 400px; /* Matches the portfolio card width */
+  height: 200px; /* Matches portfolio item height */
+  margin: auto;
+}
