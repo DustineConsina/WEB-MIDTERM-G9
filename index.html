@@ -443,8 +443,8 @@
                                 </div>
                             </div>
                             <div class="portfolio-content">
-                                <span class="category">Origami</span>
-                                <h3>Fish</h3>
+                                <span class="category">Home Craft</span>
+                                <h3>Table Lamp Using Plastic Bottle</h3>
                                 <p></p>
                             </div>
                         </div>
@@ -521,8 +521,8 @@
             const portfolios = {
                 1: {
                     title: 'Paper Caterpillar',
-                    image: 'assets/img/portfolio/caterpillar.jpg',
-                    description: 'MATERIALS: Colored paper, scissors, glue, and googly eyes',
+                    video: 'https://youtu.be/-fjchEb-3UQ?si=r8YIjuYdwhpl14oA',
+                    description: 'Colored paper, scissors, glue, and googly eyes',
                     steps: [
                         'Step 1: Cut out strips of colored paper.',
                         'Step 2: Roll the strips into circles and glue the ends together to form the body segments.',
@@ -532,8 +532,8 @@
                 },
                 2: {
                     title: 'Crab paper',
-                    image: 'assets/img/portfolio/Crab.jpg',
-                    description: 'MATERIALS: colored paper, scissors, glue.',
+                    video: 'https://youtu.be/3FSvTGYezJA?si=Hjx8XEP2wqHP0OkT',
+                    description: 'colored paper, scissors, glue.',
                     steps: [
                         'Step 1: Start with a square red paper placed in a diamond position.', 
                         'Step 2: Fold diagonally in both directions to create an "X" crease.',
@@ -544,8 +544,8 @@
                     ]
                 },
                 3: {
-                    title: 'Product Animation Reel',
-                    image: 'assets/img/portfolio/butterfly paper.jpg',
+                    title: 'Butterfly',
+                    video: 'https://youtu.be/mfI3MIbbkgM?si=yMoyNKAQUcqbpToL',
                     description: 'Donec ullamcorper nulla non metus auctor fringilla dapibus.',
                     steps: [
                     'Step 1: Start with a square piece of paper and fold it in half both ways to create a cross crease.',
@@ -560,7 +560,7 @@
                 },
                 4: {
                     title: 'Swan origami',
-                    image: 'assets/img/portfolio/swan origami.jpg',
+                    video: 'https://youtu.be/Tt47o-DyJXo?si=2SzxBAlv9gk8M1ip',
                     description: '',
                     steps: [
                         'Step 1: Start with a square piece of paper placed in a diamond position. ',
@@ -574,7 +574,7 @@
                 },
                 5: {
                     title: 'Rabbit Origami',
-                    image: 'assets/img/portfolio/rabbit origami.jpg',
+                    video: 'https://youtu.be/6QqBvy_yO_M?si=N5ojPjRrB0vMpCm4',
                     description: '',
                     steps: [
                         'Step 1: Start with a square paper and fold it in half diagonally to form a triangle.  ',
@@ -592,14 +592,18 @@
                     ]
                 },
                 6: {
-                    title: 'Business Card Design',
-                    image: 'assets/img/portfolio/portfolio-6.webp',
-                    description: 'Morbi leo risus, porta ac consectetur ac, vestibulum at eros.',
+                    title: 'Table Lamp Using Plastic Bottle',
+                    video: 'https://youtu.be/Xs2hAWuPmSg?si=HCaIE_IlVfUOyFsI',
+                    description: 'Home Craft',
                     steps: [
-                        'Step 1: Determine brand color palette and typeface.',
-                        'Step 2: Create unique business card design.',
-                        'Step 3: Finalize printing details and layout.',
-                        'Step 4: Deliver design for printing and digital use.'
+                        'Step 1: Cut the plastic bottle in half, keeping the bottom part as the base and the upper part as the shade.  ',
+                        'Step 2: Prepare a wooden or cardboard base to provide stability for the lamp.  ',
+                        'Step 3: Attach an LED bulb holder inside the base and connect it with a wire and switch.  ',
+                        'Step 4: Decorate the shade using decorative paper, paint, or fabric to enhance the look.  ',
+                        'Step 5: Fix the shade over the bulb holder and secure it using hot glue.  ',
+                        'Step 6: Ensure the connections are safe, then plug in the lamp and test it.  ',
+                        'Step 7: Your DIY plastic bottle table lamp is now ready to use!  '
+
                     ]
                 },
                 7: {
@@ -626,32 +630,8 @@
                 }
             };
         
-            // Function to load portfolio details into the modal
-            $('#portfolioModal').on('show.bs.modal', function (event) {
-                var button = $(event.relatedTarget); // Button that triggered the modal
-                var craftId = button.data('craft'); // Extract craft ID from data attribute
-                var portfolio = portfolios[craftId]; // Get portfolio details
-        
-                // Inject the content into the modal
-                var modalBody = $(this).find('.modal-body');
-                modalBody.html(`
-                    <div class="row">
-                        <div class="col-md-6">
-                            <!-- Image with medium size (max-width for medium size) -->
-                            <img src="${portfolio.image}" alt="${portfolio.title}" class="img-fluid" style="max-width: 100%; height: auto;">
-                        </div>
-                        <div class="col-md-6">
-                            <h4>${portfolio.title}</h4>
-                            <p>${portfolio.description}</p>
-                            <h5>Step-by-Step Process:</h5>
-                            <ul>
-                                ${portfolio.steps.map(step => `<li>${step}</li>`).join('')}
-                            </ul>
-                        </div>
-                    </div>
-                `);
-            });
-        </script>
+
+</script>
         
 
     <!-- Pricing Section -->

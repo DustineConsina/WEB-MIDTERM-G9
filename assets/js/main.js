@@ -210,4 +210,62 @@
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
 
+
+
+  // Function to convert YouTube URL to embed format
+function getYouTubeEmbedUrl(url) {
+  if (url.includes("youtu.be")) {
+      return url.replace("youtu.be/", "www.youtube.com/embed/");
+  }
+  if (url.includes("watch?v=")) {
+      return url.replace("watch?v=", "embed/");
+  }
+  return url; // Return unchanged if already in embed format
+}
+
+// Function to load portfolio details into the modal
+$('#portfolioModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget); // Button that triggered the modal
+  var craftId = button.data('craft'); // Extract craft ID from data attribute
+  var portfolio = portfolios[craftId]; // Get portfolio details
+
+  var modalBody = $(this).find('.modal-body');
+
+  // Check if portfolio has a video
+  let mediaContent = '';
+  if (portfolio.video) {
+      let embedUrl = getYouTubeEmbedUrl(portfolio.video);
+      mediaContent = `
+          <div class="video-container">
+              <iframe id="portfolioVideo" class="embed-responsive-item" src="${embedUrl}?autoplay=1" allowfullscreen></iframe>
+          </div>
+      `;
+  } else if (portfolio.image) {
+      mediaContent = `<img src="${portfolio.image}" alt="${portfolio.title}" class="img-fluid" style="max-width: 100%; height: auto;">`;
+  }
+
+  // Inject the content into the modal
+  modalBody.html(`
+      <div class="row">
+          <div class="col-md-6">
+              ${mediaContent}
+          </div>
+          <div class="col-md-6">
+              <h4>${portfolio.title}</h4>
+              <p>${portfolio.description}</p>
+              <h5>Step-by-Step Process:</h5>
+              <ul>
+                  ${portfolio.steps.map(step => `<li>${step}</li>`).join('')}
+              </ul>
+          </div>
+      </div>
+  `);
+});
+
+// Stop the video when modal is closed
+$('#portfolioModal').on('hidden.bs.modal', function () {
+  $('#portfolioVideo').attr('src', ''); // Clear the src attribute to stop the video
+});
+
+
 })();
